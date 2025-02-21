@@ -1,0 +1,90 @@
+// login.scss
+
+// Variables
+$primary-color: #5cb85c;
+$hover-color: #4cae4c;
+$error-color: red;
+$input-border-color: #ccc;
+$input-padding: 10px;
+$font-size: 16px;
+
+// Mixin for button styles
+@mixin button-style {
+  padding: $input-padding;
+  background-color: $primary-color;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: $font-size;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    padding: $input-padding;
+    margin-bottom: 15px;
+    border: 1px solid $input-border-color;
+    border-radius: 5px;
+    font-size: $font-size;
+  }
+
+  button {
+    @include button-style;
+  }
+
+  .error {
+    color: $error-color;
+    margin-bottom: 15px;
+  }
+
+  p {
+    text-align: center;
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Mobile responsiveness
+@media (max-width: 600px) {
+  .auth-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}

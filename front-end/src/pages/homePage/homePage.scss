@@ -1,0 +1,237 @@
+.home-page {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.hero-section {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .hero-content {
+    text-align: center;
+    color: #fff;
+    z-index: 1;
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-button {
+      font-size: 1.2rem;
+      padding: 12px 30px;
+      border-radius: 25px;
+      background-color: #6c63ff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+
+      &:hover {
+        background-color: #ffbf65;
+      }
+    }
+  }
+}
+
+.featured-books {
+  padding: 4rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .book-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+  
+    .book-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+  
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  
+    .book-details {
+      padding: 1rem;
+      text-align: center;
+  
+      .book-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+  
+      .book-author {
+        color: #666;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+.about-section {
+  padding: 4rem 1rem;
+  background-color: #f9f9f9;
+  text-align: center;
+
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .about-gif {
+      width: 256px;
+    }
+  }
+}
+
+.testimonials-section {
+  padding: 4rem 1rem;
+  background-color: #fff;
+  text-align: center;
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .testimonial-card {
+      background-color: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+      .testimonial-quote {
+        font-style: italic;
+        color: #555;
+      }
+
+      .testimonial-author {
+        margin-top: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .hero-section {
+    height: 60vh;
+
+    .hero-content {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .hero-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+    }
+  }
+
+  .featured-books {
+    padding: 2rem 1rem;
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .book-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    height: 50vh;
+
+    .hero-content {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .hero-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+    }
+  }
+
+  .featured-books {
+    padding: 1rem;
+
+    .section-title {
+      font-size: 1.75rem;
+    }
+
+    .book-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
