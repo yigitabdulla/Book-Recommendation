@@ -12,6 +12,12 @@ const userSchema = new mongoose.Schema(
         ref: 'Book',
       },
     ],
+    recommendations: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Recommendation',
+      },
+    ],
   },
   { timestamps: true }
 );

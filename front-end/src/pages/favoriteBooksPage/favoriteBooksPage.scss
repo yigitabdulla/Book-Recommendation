@@ -9,28 +9,237 @@
     text-align: center;
     margin-bottom: 2rem;
     color: #333;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+
+  .recommendation-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+    .recommendation-input {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+
+      input {
+        padding: 10px;
+        width: 300px;
+        border-radius: 25px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        transition: all 0.3s ease;
+
+        &:focus {
+          outline: none;
+          border-color: #6c63ff;
+          box-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+          width: 80vw;
+        }
+      }
+
+      button {
+        padding: 0.5rem 1rem;
+        background-color: #6c63ff;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+
+        &:hover {
+          background-color: #5a52e0;
+          transform: scale(1.05);
+        }
+
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+    }
+
+    .selected-books {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+
+        li {
+          background: #fff;
+          padding: 15px;
+          margin: 10px 0;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          width: 80%;
+          max-width: 400px;
+          text-align: center;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+          &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+          }
+        }
+      }
+    }
+
+    .recommendations-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-top: 20px;
+      text-align: center;
+
+      h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 15px;
+
+        @media (max-width: 768px) {
+          font-size: 20px;
+        }
+      }
+
+      ul {
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: center;
+        list-style: none;
+        gap: 10px;
+        width: 100%;
+        padding: 0;
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        li {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          background: #fff;
+          padding: 15px;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          max-width: 200px;
+          text-align: center;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          flex: 1;
+          min-height: 400px;
+
+          strong {
+            font-size: 18px;
+          }
+
+          p {
+            margin: 10px 0;
+          }
+
+          button {
+            padding: 0.5rem 1rem;
+            background-color: #6c63ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+              background-color: #5a52e0;
+            }
+          }
+
+          &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+          }
+        }
+      }
+    }
   }
 
   .filters {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
     margin-bottom: 2rem;
 
-    .filter-dropdown,
-    .sort-dropdown {
-      flex: 1;
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
 
-      label {
-        font-size: 1rem;
-        margin-right: 0.5rem;
+      &::placeholder {
+        color: #333;
+        font-size: 16px;
+      }
+    }
+
+    .selectable-filters {
+      gap: 1rem;
+      display: flex;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
       }
 
-      select {
-        width: 100%;
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 1rem;
+      .filter-dropdown,
+      .sort-dropdown {
+        flex: 1;
+
+        label {
+          font-size: 1rem;
+          margin-right: 0.5rem;
+        }
+
+        select {
+          width: 100%;
+          padding: 0.5rem;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 1rem;
+        }
       }
     }
   }
@@ -47,6 +256,7 @@
       text-align: center;
       justify-content: space-between;
       background-color: #fff;
+      max-width: 400px;
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -86,8 +296,13 @@
       }
 
       .book-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         padding: 10px;
         text-align: center;
+
+        @media (max-width: 768px) {}
 
         button {
           padding: 0.5rem 1rem;
@@ -106,67 +321,82 @@
     }
   }
 
-  .recommendation-section {
-    margin-top: 4rem;
+  .saved-recommendations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
 
-    .section-title {
-      font-size: 2rem;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 1.5rem;
+    h2 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 15px;
+
+      @media (max-width: 768px) {
+        font-size: 20px;
+      }
     }
 
-    .recommendation-options {
+    ul {
+      width: 90%;
       display: flex;
-      gap: 1rem;
-      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      align-items: stretch;
+      justify-content: center;
+      list-style: none;
+      gap: 10px;
+      padding: 0;
 
-      .book-select {
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 200px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         flex: 1;
+        min-height: 400px;
 
-        label {
-          font-size: 1rem;
-          margin-right: 0.5rem;
+        strong {
+          font-size: 18px;
         }
 
-        select {
-          width: 100%;
-          padding: 0.5rem;
-          border: 1px solid #ccc;
+        p {
+          margin: 10px 0;
+        }
+
+        button {
+          padding: 0.5rem 1rem;
+          background-color: #6c63ff;
+          color: #fff;
+          border: none;
           border-radius: 5px;
-          font-size: 1rem;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: #5a52e0;
+          }
         }
-      }
-
-      input {
-        flex: 2;
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 1rem;
-      }
-
-      button {
-        padding: 0.5rem 1rem;
-        background-color: #6c63ff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: #5a52e0;
+          transform: translateY(-5px);
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
       }
-    }
-
-    .recommendation-text {
-      background-color: #f5f5f5;
-      padding: 1rem;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      line-height: 1.6;
     }
   }
 }
@@ -180,14 +410,5 @@
       flex-direction: column;
     }
 
-    .recommendation-options {
-      flex-direction: column;
-
-      input,
-      select,
-      button {
-        width: 100%;
-      }
-    }
   }
 }

@@ -20,7 +20,7 @@ export const loginUser = createAsyncThunk(
         password 
       }, { withCredentials: true }); // Send cookies with request
 
-      Cookies.set("token", response.data.token, { expires: 7 }); // Store token in cookies (expires in 7 days)
+      Cookies.set("token", response.data.token, { expires: 1, sameSite: "strict"});
       return response.data; // { token, user }
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || "Invalid credentials");

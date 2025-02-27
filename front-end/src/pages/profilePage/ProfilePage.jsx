@@ -1,71 +1,57 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect , useState} from 'react';
 import './profilePage.scss';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../redux/slices/authSlice";
 
 const ProfilePage = () => {
-  const [userInfo, setUserInfo] = useState({
-    email: 'user@example.com',
+  const [passwordForm, setPasswordForm] = useState({
     currentPassword: '',
     newPassword: '',
     confirmPassword: '',
   });
-  const [loading, setLoading] = useState(true); // New state to track loading
 
   const dispatch = useDispatch();
-  const { user, token } = useSelector((state) => state.auth);
+  const { user, token, loading, error } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (token) {
-      dispatch(fetchUser())
-        .finally(() => setLoading(false));
+      dispatch(fetchUser());
     }
   }, [dispatch, token]);
-  console.log(user)
+
+  const handleChange = useCallback((e) => {
+    const { name, value } = e.target;
+    setPasswordForm((prev) => ({ ...prev, [name]: value }));
+  }, []);
+
+  const handlePasswordChange = (e) => {
+    
+  };
 
   if (loading) {
     return <p>Loading...</p>;
   }
 
-  if (!token) {
-    return <p>You are not logged in. <a href="/login">Login here</a></p>;
+  if (error) {
+    return <p>Error: {error}</p>;
   }
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserInfo({ ...userInfo, [name]: value });
-  };
-
-  const handlePasswordChange = (e) => {
-    e.preventDefault();
-    if (userInfo.newPassword !== userInfo.confirmPassword) {
-      alert('New password and confirm password do not match.');
-      return;
-    }
-    // Handle password change logic here (backend integration later)
-    alert('Password changed successfully!');
-    setUserInfo({ ...userInfo, currentPassword: '', newPassword: '', confirmPassword: '' });
-  };
+  if (!token || !user) {
+    return <p>You are not logged in. <a href="/login">Login here</a></p>;
+  }
 
   return (
     <div className="profile-page">
       <h1 className="page-title">My Profile</h1>
 
-      {/* User Information Section */}
       <div className="profile-section">
         <h2 className="section-title">Account Information</h2>
         <div className="form-group">
           <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={user.email}
-            disabled
-          />
+          <input type="email" id="email" value={user.email} disabled />
         </div>
       </div>
 
-      {/* Change Password Section */}
       <div className="profile-section">
         <h2 className="section-title">Change Password</h2>
         <form onSubmit={handlePasswordChange}>
@@ -75,7 +61,7 @@ const ProfilePage = () => {
               type="password"
               id="currentPassword"
               name="currentPassword"
-              value={userInfo.currentPassword}
+              value={passwordForm.currentPassword}
               onChange={handleChange}
               required
             />
@@ -86,7 +72,7 @@ const ProfilePage = () => {
               type="password"
               id="newPassword"
               name="newPassword"
-              value={userInfo.newPassword}
+              value={passwordForm.newPassword}
               onChange={handleChange}
               required
             />
@@ -97,13 +83,13 @@ const ProfilePage = () => {
               type="password"
               id="confirmPassword"
               name="confirmPassword"
-              value={userInfo.confirmPassword}
+              value={passwordForm.confirmPassword}
               onChange={handleChange}
               required
             />
           </div>
-          <button type="submit" className="submit-button">
-            Change Password
+          <button type="submit" className="submit-button" disabled={loading}>
+            {loading ? 'Changing Password...' : 'Change Password'}
           </button>
         </form>
       </div>

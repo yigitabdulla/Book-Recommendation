@@ -10,7 +10,6 @@ const BooksPage = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [filter, setFilter] = useState('all');
     const [categories, setCategories] = useState([]);
-    const [favorites, setFavorites] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [totalItems, setTotalItems] = useState(0);
     const [isLoading, setIsLoading] = useState(false);

@@ -33,6 +33,8 @@ const removeFavorite = async (req, res) => {
     user.favorites = user.favorites.filter((book) => book.toString() !== bookId);
     await user.save();
 
+    await Book.findByIdAndDelete(bookId);
+
     res.status(200).json({ message: 'Book removed from favorites' });
   } catch (err) {
     res.status(500).json({ message: 'Error removing favorite book', error: err });
